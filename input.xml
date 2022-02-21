@@ -1,0 +1,57 @@
+<root>
+    <Ticket>
+        <id>255</id>
+        <name>Билет</name>
+        <Coordinates>
+            <x>15</x>
+            <y>30</y>
+        </Coordinates>
+        <creationDate>25.03.2016</creationDate>
+        <price>300</price>
+        <refundable>false</refundable>
+        <type>VIP</type>
+        <venue>
+            <id>359</id>
+            <name>Саратовский возкал</name>
+            <capacity>2</capacity>
+            <address>
+                <street>Улица Пушкина</street>
+                <zipCode>88005553535</zipCode>
+                <town>
+                    <x>300</x>
+                    <y>300</y>
+                    <z>300</z>
+                    <name>Дом Колотушкина</name>
+                </town>
+            </address>
+        </venue>
+    </Ticket>
+    <Ticket>
+        <id>240</id>
+        <name>Билет</name>
+        <Coordinates>
+            <x>15</x>
+            <y>30</y>
+        </Coordinates>
+        <creationDate>25.03.2016</creationDate>
+        <price>300</price>
+        <refundable>false</refundable>
+        <type>USUAL</type>
+        <venue>
+            <id>359</id>
+            <name>Саратовский возкал</name>
+            <capacity>2</capacity>
+            <address>
+                <street>Улица Пушкина</street>
+                <zipCode>88005553535</zipCode>
+                <town>
+                    <x>300</x>
+                    <y>300</y>
+                    <z>300</z>
+                    <name>Дом Колотушкина</name>
+                </town>
+            </address>
+        </venue>
+    </Ticket>
+
+</root>
