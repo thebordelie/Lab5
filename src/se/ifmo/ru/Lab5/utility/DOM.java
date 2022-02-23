@@ -19,13 +19,28 @@ import sun.util.resources.LocaleData;
 
 
 public class DOM {
+    /**
+     * Свойство - список, в которой записывается считанные данные
+     */
     private LinkedList<Ticket> tickets;
     private ArrayList<String> valueOfTicket;
+
+    /**
+     * Конструктор
+     * @param tickets Список, в который записываются данные
+     */
     public DOM(LinkedList<Ticket> tickets){
         this.tickets=tickets;
         valueOfTicket=new ArrayList<>();
     }
-    public void readingFile() throws ParserConfigurationException, IOException, SAXException {
+
+    /**
+     * Метод - читает файл
+     * @throws ParserConfigurationException немозможно считать файл
+     * @throws IOException Файл отсутствует
+     * @throws SAXException Непредвиденная ошибка
+     */
+    public void readingFile(String env) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory documentBuilderFactory=DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder=documentBuilderFactory.newDocumentBuilder();
         Document document=documentBuilder.parse(new File("input.xml"));
@@ -64,6 +79,11 @@ public class DOM {
         }
 
     }
+
+    /**
+     * Метод - считывает из list файлы
+     * @param list - хранит считанные файлы
+     */
     private void printInfoAboutAllChildNodes(NodeList list){
         for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);

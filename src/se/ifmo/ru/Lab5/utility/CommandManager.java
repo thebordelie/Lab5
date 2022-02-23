@@ -5,18 +5,29 @@ import se.ifmo.ru.Lab5.data.Venue;
 import java.util.Scanner;
 
 public class CommandManager {
+    /** Свойство - объект класса CollectionManager*/
     private CollectionManager manager;
+    /** Свойство - Изначальное значение команды пользователя*/
     private String userCommand="";
+    /** Свойство - Список, содержащий команду и аргументы команды, вводимой пользователем */
     private String[] finalCommad;
+
+    /**
+     *
+     * @param manager Объект класса CollectionManager, из которого вызываются методы для работы с коллекцией
+     */
     public CommandManager(CollectionManager manager){
         this.manager=manager;
     }
-    public void interactiveMod(boolean ifSrcipt,String userCommand){
+
+
+    public void interactiveMod(){
         Scanner commandReader = new Scanner(System.in);
         while (!userCommand.equals("exit")) {
             System.out.print("Введите команду:");
             userCommand = commandReader.nextLine();
             finalCommad = userCommand.trim().split(" ", 2);
+            // commandManager - обрабатывает команду, введённой пользователем
             commandManager();
             System.out.println("------------------------------------------------------------");
         }

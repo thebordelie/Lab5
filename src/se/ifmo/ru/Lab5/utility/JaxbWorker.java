@@ -9,7 +9,15 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Класс, сохраняет коллекцию
+ */
 public class JaxbWorker {
+    /**
+     * Метод - конвертирует объект в xml-файл
+     * @param tickets - сохраняемые объекты
+     * @param name - название файла
+     */
     protected void convertObjectToXml(TicketList tickets, String name){
         try {
             JAXBContext context = JAXBContext.newInstance(TicketList.class);

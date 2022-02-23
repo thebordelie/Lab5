@@ -3,9 +3,13 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name="town")
 @XmlType(propOrder = {"x","y","z","name"})
 public class Location {
+    /** Свойство - координата по x*/
     private long x;
+    /** Свойство - координата по y*/
     private float y;
+    /** Свойство - координата по z*/
     private Long z; //Поле не может быть null
+    /** Свойство - название здания*/
     private String name; //Длина строки не должна быть больше 272, Поле не может быть null
 
     public Location(long x, float y, Long z, String name) {
@@ -15,14 +19,26 @@ public class Location {
         this.name = name;
     }
     public Location(){}
+    /**
+     * метод getX
+     * @return возвращает координату x
+     */
     @XmlElement
     public long getX() {
         return x;
     }
+    /**
+     * метод getY
+     * @return возвращает координату y
+     */
     @XmlElement
     public float getY() {
         return y;
     }
+    /**
+     * метод getZ
+     * @return возвращает координату z
+     */
     @XmlElement
     public Long getZ() {
         return z;

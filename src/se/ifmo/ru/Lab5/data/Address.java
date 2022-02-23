@@ -5,8 +5,11 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name="address")
 @XmlType(propOrder = {"street","zipCode","town"})
 public class Address {
+    /** Свойство - улица */
     private String street; //Строка не может быть пустой, Поле может быть null
+    /** Свойство - индекс */
     private String zipCode; //Поле не может быть null
+    /** Свойство - здание */
     private Location town; //Поле может быть null
 
     public Address(String street, String zipCode, Location town) {
@@ -15,14 +18,29 @@ public class Address {
         this.town = town;
     }
     public Address(){}
+
+    /**
+     *
+     * @return возвращает значение улицы
+     */
     @XmlElement
     public String getStreet() {
         return street;
     }
+
+    /**
+     *
+     * @return возвращает значение индекса
+     */
     @XmlElement
     public String getZipCode() {
         return zipCode;
     }
+
+    /**
+     *
+     * @return возвращает значение здания
+     */
     @XmlElement
     public Location getTown() {
         return town;

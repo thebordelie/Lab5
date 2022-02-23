@@ -5,7 +5,9 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name="coordinates")
 @XmlType( propOrder={"x","y"})
 public class Coordinates {
+    /** Свойство - координата x*/
     private float x;
+    /** Свойство - координата y*/
     private long y; //Значение поля должно быть больше -132
 
     public Coordinates(float x, long y) {
@@ -13,10 +15,19 @@ public class Coordinates {
         this.y = y;
     }
     public Coordinates(){}
+
+    /**
+     * метод getX
+     * @return возвращает координату x
+     */
     @XmlElement(name="x")
     public float getX() {
         return x;
     }
+    /**
+     * метод getY
+     * @return возвращает координату y
+     */
     @XmlElement(name="y")
     public long getY() {
         return y;

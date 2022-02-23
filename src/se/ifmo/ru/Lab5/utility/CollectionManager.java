@@ -12,26 +12,43 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * @author Керпик Артём
+ */
 public class CollectionManager {
+    /**Свойство - Сохраняет коллекцию*/
     private JaxbWorker jaxbWorker;
+    /**Свойство - дата*/
     private java.time.LocalDate localDate;
+    /**Свойство - Спрашивает у пользователя параметры билета*/
     private final TicketAsker ticketAsker;
+    /**Свойство - Связный список, хранящий билеты*/
     private LinkedList<Ticket> tickets;
+    /**Свойство - Карта, хранящая все команды*/
     private final HashMap<String,String> helpCommand;
+    /**Свойство - объект, хранящий в себе список билетов */
     private TicketList ticketList;
-    public CollectionManager(String env)  {
+    /**Свойство - переменная окружения */
+    private String env;
 
+    /**
+     *
+     * @param env Переменная окружения
+     */
+    public CollectionManager(String env)   {
+        this.env=env;
         jaxbWorker=new JaxbWorker();
         tickets=new LinkedList<>();
         localDate=LocalDate.now();
         DOM dom =new DOM(tickets);
+
         try{
-            dom.readingFile();
+            dom.readingFile(env);
         }
          catch (ParserConfigurationException e) {
             System.out.println("Невозможно прочитать файл");
         } catch (IOException e) {
-            System.out.println("Файл отсутсвует");
+            System.out.println("Файл отсутствует");
         } catch (SAXException e) {
             System.out.println("Ошибка!");
         }
@@ -56,16 +73,25 @@ public class CollectionManager {
         helpCommand.put("group_counting_by_type:"," сгруппировать элементы коллекции по значению поля type, вывести количество элементов в каждой группе");
         helpCommand.put("count_less_than_refundable refundable:"," вывести количество элементов, значение поля refundable которых меньше заданного");
     }
+    /**
+     * Метод - выводит список всех команд
+     */
     protected void help(){
         for(Map.Entry<String,String> entry:helpCommand.entrySet() ){
             System.out.println(entry );
         }
     }
+    /**
+     * Метод - выводит на экран основную информацию про коллекцию
+     */
     protected void info(){
         System.out.println("Коллекция содержит элементы типа Ticket");
         System.out.println("Дата создания коллекции:"+localDate);
         System.out.println("В коллекции находится: "+tickets.size());
     }
+    /**
+     * Метод - выводит все билеты в коллекции
+     */
     protected void show(){
         if (tickets.size()==0){
             System.out.println("Коллекция пуста");
@@ -78,16 +104,24 @@ public class CollectionManager {
         }
 
     }
+    /**
+     * Метод - создает объект класса Ticket и добавляет в коллекцию, хранящую все билеты
+     */
     protected void add(){
         System.out.println("Добавление элемента");
+        long id=(long)(Math.random()* Integer.MAX_VALUE);
         if (tickets.size()==0){
-            tickets.add(new Ticket(1,ticketAsker.askName(),ticketAsker.askCoordinates(), LocalDate.now(),ticketAsker.askPrice(), ticketAsker.askRefundable(), ticketAsker.askTicketType(),new Venue(1L, ticketAsker.askName(), ticketAsker.askCapacity(),ticketAsker.askAddress())));
+            tickets.add(new Ticket(id,ticketAsker.askName(),ticketAsker.askCoordinates(), LocalDate.now(),ticketAsker.askPrice(), ticketAsker.askRefundable(), ticketAsker.askTicketType(),new Venue(id, ticketAsker.askName(), ticketAsker.askCapacity(),ticketAsker.askAddress())));
         }
         else {
             tickets.add(new Ticket(tickets.getLast().getId()+1,ticketAsker.askName(),ticketAsker.askCoordinates(), LocalDate.now(),ticketAsker.askPrice(), ticketAsker.askRefundable(), ticketAsker.askTicketType(),new Venue(tickets.getLast().getId()+1, ticketAsker.askName(), ticketAsker.askCapacity(), ticketAsker.askAddress())));
         }
         System.out.println("Элемент успешно добавлен");
     }
+    /**
+     * Метод - обновляет билет по его id
+     * @param Id id, по которому происходит обновление элемента
+     */
     protected void update(String Id){
         try{
             long id=Long.parseLong(Id);
@@ -108,6 +142,10 @@ public class CollectionManager {
             System.out.println("Неверное значение id");
         }
     }
+    /**
+     * Метод - удаляет билет по его id
+     * @param id id, по которому происходит удаление
+     */
     protected void remove_by_id(String id){
         try {
             for (Ticket ticket:tickets){
@@ -128,15 +166,25 @@ public class CollectionManager {
             System.out.println("Неверное значение id");
         }
     }
+    /**
+     * Метод - очищает коллекцию
+     */
     protected void clear(){
         tickets.clear();
         System.out.println("Коллекция успешно очищена");
     }
+    /**
+     * Метод - сохраняет коллекцию в файл
+     */
     protected void save(){
         String file_name="in.xml";
         jaxbWorker.convertObjectToXml(ticketList,file_name);
         System.out.println("Файл успешно сохранён");
     }
+    /**
+     * Метод - считывает из файла команды и выполняет их
+     * @param file_name имя файла
+     */
     protected void execute_script(String file_name) {
         String command;
         String[] finalCommad;
@@ -198,7 +246,7 @@ public class CollectionManager {
                         count_less_than_refundable(finalCommad[1]);
                         break;
                     default:
-                        System.out.println("Команда не найдена, напишите 'help' для получения списка возможных команд");
+                        System.out.println("Команды "+finalCommad[0]+" не удалось обнаружить");
                     }
                 command = inputStreamReader.readLine();
 
@@ -214,7 +262,13 @@ public class CollectionManager {
 
 
     }
+    /**
+     * Метод - остановка программы
+     */
     protected void exit(){System.out.println("До новых встреч!");}
+    /**
+     * Метод - выводит первый элемент, если таковой имеется
+     */
     protected void head(){
         try {
             System.out.println("Первый элемент:"+tickets.peekFirst());
@@ -223,6 +277,9 @@ public class CollectionManager {
             System.out.println("В коллекции отсутствуют элементы");
         }
     }
+    /**
+     * Метод - удаляет первый элемент, если таковой имеется
+     */
     protected void remove_head(){
         try{
             System.out.println("Удаленный элемент: "+tickets.remove().getName());
@@ -232,6 +289,9 @@ public class CollectionManager {
             System.out.println("В коллекции отсутствуют элементы, удаление невозможно");
         }
     }
+    /**
+     * Метод - добавляет в коллекцию новый элемент, если его id наименьший
+     */
     protected void add_if_min(){
         if (tickets.size()==0){
             System.out.println("Коллекция пуста, сравнение невозможно");
@@ -252,7 +312,9 @@ public class CollectionManager {
             else System.out.println("Элемент не наименьший");
         }
     }
-
+    /**
+     * Метод - удаление билета, если их Venue эквивалентны
+     */
     protected void remove_any_by_venue(){
         System.out.println("Создание venue:");
         Venue venue=new Venue((long)(Math.random()*10),ticketAsker.askName(), ticketAsker.askCapacity(), ticketAsker.askAddress());
@@ -271,6 +333,9 @@ public class CollectionManager {
             System.out.println("Коллекция пуста");
         }
     }
+    /**
+     * Метод - Сортирует по типу и считает количество типов в коллекции
+     */
     protected void group_counting_by_type(){
         int countVIP=0,countUSUAL =0,countBUDGETARY=0,countCHEAP=0;
         TicketType type;

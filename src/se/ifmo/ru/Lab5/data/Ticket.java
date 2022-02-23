@@ -5,13 +5,21 @@ import java.time.LocalDate;
 @XmlRootElement (name="Ticket")
 @XmlType(propOrder = { "id","name","coordinates","creationDate","price","refundable","type","venue"})
 public class Ticket {
+    /** Свойство - Id билета */
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    /** Свойство - название билета*/
     private String name; //Поле не может быть null, Строка не может быть пустой
+    /** Свойство - координаты места прибытия*/
     private Coordinates coordinates; //Поле не может быть null
+    /** Свойство - дата создания*/
     private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    /** Свойство - цена билета */
     private float price; //Значение поля должно быть больше 0
+    /** Свойство - возвращаемый ли билет*/
     private boolean refundable;
+    /** Свойство - тип билета*/
     private TicketType type; //Поле не может быть null
+    /** Свойство - место отправления*/
     private Venue venue; //Поле может быть null
     public Ticket(long id, String name, Coordinates coordinates, LocalDate creationDate, float price, boolean refundable, TicketType type, Venue venue) {
         this.id = id;
@@ -24,34 +32,74 @@ public class Ticket {
         this.venue = venue;
     }
     public Ticket(){}
+
+    /**
+     * Метод id
+     * @return Возвращает id билета
+     */
     @XmlElement(name="id")
     public long getId() {
         return id;
     }
+
+    /**
+     * Метод name
+     * @return возвращает название билета
+     */
     @XmlElement(name="name")
     public String getName() {
         return name;
     }
+
+    /**
+     * Метод getCoordinates
+     * @return возвращает координаты место прибытия
+     */
     @XmlElement
     public Coordinates getCoordinates() {
         return coordinates;
     }
+
+    /**
+     * Метод getCreationDate
+     * @return Возвращает дату создания билета
+     */
     @XmlElement
     public String getCreationDate() {
         return creationDate.getDayOfMonth()+"."+creationDate.getMonthValue()+"."+creationDate.getYear();
     }
+
+    /**
+     * Метод getPrice
+     * @return возвращает цену билета
+     */
     @XmlElement(name="price")
     public float getPrice() {
         return price;
     }
+
+    /**
+     * Метод isRefundable
+     * @return возвращает возвращаемость билета
+     */
     @XmlElement(name="refundable")
     public boolean isRefundable() {
         return refundable;
     }
+
+    /**
+     * Метод getType
+     * @return возвращает тип билета
+     */
     @XmlElement(name="type")
     public TicketType getType() {
         return type;
     }
+
+    /**
+     * Метод getVenue
+     * @return возвращает место отправления
+     */
     @XmlElement(name="venue")
     public Venue getVenue() {
         return venue;

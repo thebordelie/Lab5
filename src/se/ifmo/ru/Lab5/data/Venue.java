@@ -4,9 +4,13 @@ import javax.xml.bind.annotation.*;
 @XmlType(propOrder = {"id","name","capacity","address"})
 public class Venue {
     //Место отправления
+    /** Свойство - id места отправления*/
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    /** Свойство - название места отправления*/
     private String name; //Поле не может быть null, Строка не может быть пустой
+    /** Свойство - вместимость*/
     private int capacity; //Значение поля должно быть больше 0
+    /** Свойство - Адрес*/
     private Address address; //Поле может быть null
     public Venue(Long id, String name, int capacity,Address address){
         this.id=id;
@@ -15,18 +19,35 @@ public class Venue {
         this.address=address;
     }
     public Venue(){}
+
+    /**
+     * Метод getId
+     * @return возвращает id Venue
+     */
     @XmlElement
     public Long getId() {
         return id;
     }
+    /**
+     * Метод getName
+     * @return возвращает name Venue
+     */
     @XmlElement
     public String getName() {
         return name;
     }
+    /**
+     * Метод getCapacity
+     * @return возвращает capacity Venue
+     */
     @XmlElement
     public int getCapacity() {
         return capacity;
     }
+    /**
+     * Метод getAddress
+     * @return возвращает Address Venue
+     */
     @XmlElement
     public Address getAddress() {
         return address;

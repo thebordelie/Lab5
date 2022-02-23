@@ -18,6 +18,11 @@ public class TicketAsker {
     public Scanner getScanner() {
         return scanner;
     }
+
+    /**
+     * Метод - спрашивает у пользователя название
+     * @return Возвращает имя
+     */
     public String askName(){
         String name;
         try{
@@ -33,12 +38,21 @@ public class TicketAsker {
         return name;
     }
 
+    /**
+     * Метод - Спрашивает у пользователя параметры для Coordinates
+     * @return создает и возвращает объект класса Coordinates
+     */
     public Coordinates askCoordinates(){
         System.out.println("Введите координаты места прибытия");
         Coordinates coordinates;
         coordinates=new Coordinates(askX(),askY());
         return coordinates;
     }
+
+    /**
+     * Метод - спрашивает у пользователя x
+     * @return Возвращает координату x
+     */
     public float askX(){
         String strX;
         float x;
@@ -62,6 +76,11 @@ public class TicketAsker {
 
         return x;
     }
+
+    /**
+     * Метод - спрашивает значение y
+     * @return возвращает значение y
+     */
     public long askY(){
         String strY;
         long y;
@@ -84,6 +103,11 @@ public class TicketAsker {
 
         return y;
     }
+
+    /**
+     * Метод - спрашивает цену билета
+     * @return возвращает цену билета
+     */
     public float askPrice(){
         String strPrice;
         float price;
@@ -105,6 +129,11 @@ public class TicketAsker {
         }
         return price;
     }
+
+    /**
+     * Метод - спрашивает у пользователя возвращаемый ли билет
+     * @return возвращает true или false
+     */
     public boolean askRefundable(){
         String strRefundable;
         boolean refundable;
@@ -128,6 +157,11 @@ public class TicketAsker {
         }
         return refundable;
     }
+
+    /**
+     * Метод - спрашивает у пользователя тип Билета
+     * @return возвращает тип Билета
+     */
     public TicketType askTicketType(){
         String strType;
         TicketType type;
@@ -155,6 +189,11 @@ public class TicketAsker {
         }
         return type;
     }
+
+    /**
+     * Метод - спрашивает у пользователя координату z
+     * @return возвращает z
+     */
     public Long askZ(){
         String strZ;
         long z;
@@ -176,12 +215,22 @@ public class TicketAsker {
         }
         return z;
     }
+
+    /**
+     * Метод - спрашивает у пользователя данные для Location
+     * @return возвращает Location
+     */
     public Location askLocation(){
         System.out.println("Координаты здания:");
         Location location;
         location=new Location((long)askX(),askY(),askZ(),askName());
         return location;
     }
+
+    /**
+     * Метод - спрашивает у пользователя улицу, с которой происходит отправление
+     * @return возвращает улицу
+     */
     public String askStreet(){
         String strStreet;
         try {
@@ -197,6 +246,11 @@ public class TicketAsker {
 
         return strStreet;
     }
+
+    /**
+     * Метод - спрашивает у пользователя Индекс
+     * @return возвращает индекс
+     */
     public String askZipCode(){
         String strZipCode;
         try {
@@ -218,12 +272,22 @@ public class TicketAsker {
 
         return strZipCode;
     }
+
+    /**
+     * Метод - спрашивает у пользователя Address
+     * @return возвращает объект класса Address
+     */
     public Address askAddress(){
         System.out.println("Введите адрес места отбытия");
         Address address;
         address=new Address(askStreet(),askZipCode(),askLocation());
         return address;
     }
+
+    /**
+     * Метод - спрашивает у пользователя вместимость
+     * @return возвращает вместимость билета
+     */
     public int askCapacity(){
         String strCapacity;
         int price;
