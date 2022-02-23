@@ -34,7 +34,7 @@ public class TicketAsker {
     }
 
     public Coordinates askCoordinates(){
-        System.out.println("Введите координаты");
+        System.out.println("Введите координаты места прибытия");
         Coordinates coordinates;
         coordinates=new Coordinates(askX(),askY());
         return coordinates;
@@ -109,7 +109,7 @@ public class TicketAsker {
         String strRefundable;
         boolean refundable;
         try {
-            System.out.print("Возвращаемый:");
+            System.out.print("Возвращаемый(true, false):");
             strRefundable=scanner.nextLine().trim();
             if (strRefundable.equals("")) throw new ElementMustNotBeEmptyException();
             if(!(strRefundable.equals("true")||strRefundable.equals("false"))) throw new NumberFormatException();
@@ -132,7 +132,9 @@ public class TicketAsker {
         String strType;
         TicketType type;
         try {
-            System.out.print("Тип:");
+            System.out.println("Возможные типы билетов\n VIP, CHEAP,BUDGETARY,USUAL.");
+            System.out.print("Тип билета:");
+
             strType=scanner.nextLine().trim();
             if (strType.equals("")) throw new ElementMustNotBeEmptyException();
             type=TicketType.valueOf(strType);
@@ -217,7 +219,7 @@ public class TicketAsker {
         return strZipCode;
     }
     public Address askAddress(){
-        System.out.println("Введите адрес");
+        System.out.println("Введите адрес места отбытия");
         Address address;
         address=new Address(askStreet(),askZipCode(),askLocation());
         return address;
@@ -226,7 +228,7 @@ public class TicketAsker {
         String strCapacity;
         int price;
         try {
-            System.out.print("Вместимость=");
+            System.out.print("Количество мест=");
             strCapacity=scanner.nextLine().trim();
             if (strCapacity.equals("")) throw new ElementMustNotBeEmptyException();
             price=Integer.parseInt(strCapacity);

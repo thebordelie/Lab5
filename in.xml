@@ -1,28 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Ticket>
-    <id>255</id>
-    <name>Билет</name>
-    <coordinates>
-        <x>15.0</x>
-        <y>30</y>
-    </coordinates>
-    <creationDate>25.3.2016</creationDate>
-    <price>300.0</price>
-    <refundable>false</refundable>
-    <type>VIP</type>
-    <venue>
-        <id>359</id>
-        <name>Саратовский возкал</name>
-        <capacity>2</capacity>
-        <address>
-            <street>Улица Пушкина</street>
-            <zipCode>88005553535</zipCode>
-            <town>
-                <x>300</x>
-                <y>300.0</y>
-                <z>300</z>
-                <name>Дом Колотушкина</name>
-            </town>
-        </address>
-    </venue>
-</Ticket>
+<root>
+    <Ticket>
+        <id>240</id>
+        <name>Билет</name>
+        <coordinates>
+            <x>15.0</x>
+            <y>30</y>
+        </coordinates>
+        <creationDate>25.3.2016</creationDate>
+        <price>300.0</price>
+        <refundable>false</refundable>
+        <type>USUAL</type>
+        <venue>
+            <id>359</id>
+            <name>Саратовский возкал</name>
+            <capacity>2</capacity>
+            <address>
+                <street>Улица Пушкина</street>
+                <zipCode>88005553535</zipCode>
+                <town>
+                    <x>300</x>
+                    <y>300.0</y>
+                    <z>300</z>
+                    <name>Дом Колотушкина</name>
+                </town>
+            </address>
+        </venue>
+    </Ticket>
+    <Ticket>
+        <id>255</id>
+        <name>Билет</name>
+        <coordinates>
+            <x>15.0</x>
+            <y>30</y>
+        </coordinates>
+        <creationDate>25.3.2016</creationDate>
+        <price>300.0</price>
+        <refundable>false</refundable>
+        <type>VIP</type>
+        <venue>
+            <id>359</id>
+            <name>Саратовский возкал</name>
+            <capacity>2</capacity>
+            <address>
+                <street>Улица Пушкина</street>
+                <zipCode>88005553535</zipCode>
+                <town>
+                    <x>300</x>
+                    <y>300.0</y>
+                    <z>300</z>
+                    <name>Дом Колотушкина</name>
+                </town>
+            </address>
+        </venue>
+    </Ticket>
+    <Ticket>
+        <id>256</id>
+        <name>Ticket</name>
+        <coordinates>
+            <x>3.0</x>
+            <y>4</y>
+        </coordinates>
+        <creationDate>22.2.2022</creationDate>
+        <price>300.0</price>
+        <refundable>true</refundable>
+        <type>VIP</type>
+        <venue>
+            <id>256</id>
+            <name>Вокзал</name>
+            <capacity>3</capacity>
+            <address>
+                <street>kek</street>
+                <zipCode>43f</zipCode>
+                <town>
+                    <x>3</x>
+                    <y>4.0</y>
+                    <z>5</z>
+                    <name>home</name>
+                </town>
+            </address>
+        </venue>
+    </Ticket>
+</root>

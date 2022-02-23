@@ -5,7 +5,7 @@ import se.ifmo.ru.Lab5.utility.CommandManager;
 
 import java.util.Scanner;
 
-public class Main {
+public class Run {
     private static String userAnswer;
     public static void main(String[] args){
         String env=System.getenv("JAVA_HOME");

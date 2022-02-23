@@ -26,7 +26,7 @@ public class CollectionManager {
         localDate=LocalDate.now();
         DOM dom =new DOM(tickets);
         try{
-            dom.readinFile();
+            dom.readingFile();
         }
          catch (ParserConfigurationException e) {
             System.out.println("Невозможно прочитать файл");
@@ -36,6 +36,8 @@ public class CollectionManager {
             System.out.println("Ошибка!");
         }
         ticketAsker= new TicketAsker(new Scanner(System.in));
+        tickets.sort(Comparator.comparing(Ticket::getId));
+        ticketList=new TicketList(tickets);
         helpCommand=new HashMap<>();
         helpCommand.put("help :","Список команд");
         helpCommand.put("info:"," вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.) ");
@@ -71,7 +73,7 @@ public class CollectionManager {
         else{
             System.out.println("В данный момент хранятся следующие элементы:");
             for(Ticket ticket: tickets){
-                System.out.println(ticket.toString());
+                System.out.println(ticket);
             }
         }
 
@@ -132,7 +134,8 @@ public class CollectionManager {
     }
     protected void save(){
         String file_name="in.xml";
-        jaxbWorker.convertObjectToXml(tickets,file_name);
+        jaxbWorker.convertObjectToXml(ticketList,file_name);
+        System.out.println("Файл успешно сохранён");
     }
     protected void execute_script(String file_name) {
         String command;
@@ -211,7 +214,7 @@ public class CollectionManager {
 
 
     }
-    protected void exit(){System.out.print("До новых встреч!");}
+    protected void exit(){System.out.println("До новых встреч!");}
     protected void head(){
         try {
             System.out.println("Первый элемент:"+tickets.peekFirst());
