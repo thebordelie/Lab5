@@ -12,6 +12,12 @@ public class Address {
     /** Свойство - здание */
     private Location town; //Поле может быть null
 
+    /**
+     * Конструктор задаёт адрес места отправления
+     * @param street Улица
+     * @param zipCode Индекс
+     * @param town Здание
+     */
     public Address(String street, String zipCode, Location town) {
         this.street = street;
         this.zipCode = zipCode;
@@ -20,8 +26,8 @@ public class Address {
     public Address(){}
 
     /**
-     *
-     * @return возвращает значение улицы
+     * Возвращает значение улицы, с которого происходит отправление
+     * @return String street
      */
     @XmlElement
     public String getStreet() {
@@ -29,8 +35,8 @@ public class Address {
     }
 
     /**
-     *
-     * @return возвращает значение индекса
+     * Возвращает значение индекса
+     * @return String zipCode
      */
     @XmlElement
     public String getZipCode() {
@@ -38,8 +44,8 @@ public class Address {
     }
 
     /**
-     *
-     * @return возвращает значение здания
+     * Возвращает здание, с которого происходит отправление
+     * @return Location town
      */
     @XmlElement
     public Location getTown() {

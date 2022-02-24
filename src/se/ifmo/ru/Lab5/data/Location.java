@@ -12,6 +12,13 @@ public class Location {
     /** Свойство - название здания*/
     private String name; //Длина строки не должна быть больше 272, Поле не может быть null
 
+    /**
+     * Конструктор задаёт координаты и имя здания места отправления
+     * @param x координата по x
+     * @param y координата по y
+     * @param z координата по z
+     * @param name название здания
+     */
     public Location(long x, float y, Long z, String name) {
         this.x = x;
         this.y = y;
@@ -20,29 +27,34 @@ public class Location {
     }
     public Location(){}
     /**
-     * метод getX
-     * @return возвращает координату x
+     * возвращает координату x
+     * @return long x
      */
     @XmlElement
     public long getX() {
         return x;
     }
     /**
-     * метод getY
-     * @return возвращает координату y
+     * возвращает координату y
+     * @return float y
      */
     @XmlElement
     public float getY() {
         return y;
     }
     /**
-     * метод getZ
-     * @return возвращает координату z
+     * возвращает координату z
+     * @return Long z
      */
     @XmlElement
     public Long getZ() {
         return z;
     }
+
+    /**
+     * Возвращает название здания
+     * @return String name
+     */
     @XmlElement
     public String getName() {
         return name;

@@ -13,14 +13,16 @@ public class CommandManager {
     private String[] finalCommad;
 
     /**
-     *
+     * Конструктор задаёт объект класса CollectionManager для работы с коллекцией
      * @param manager Объект класса CollectionManager, из которого вызываются методы для работы с коллекцией
      */
     public CommandManager(CollectionManager manager){
         this.manager=manager;
     }
 
-
+    /**
+     * Считывает команду пользователя
+     */
     public void interactiveMod(){
         Scanner commandReader = new Scanner(System.in);
         while (!userCommand.equals("exit")) {
@@ -36,6 +38,10 @@ public class CommandManager {
 
 
     }
+
+    /**
+     * Вызывает соответствующую команду для работы с коллекцией
+     */
     public void commandManager(){
         switch (finalCommad[0]){
             case "help":

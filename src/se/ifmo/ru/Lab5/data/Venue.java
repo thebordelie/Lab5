@@ -12,6 +12,14 @@ public class Venue {
     private int capacity; //Значение поля должно быть больше 0
     /** Свойство - Адрес*/
     private Address address; //Поле может быть null
+
+    /**
+     * Конструктор задаёт место отправления
+     * @param id id
+     * @param name название
+     * @param capacity вместимость
+     * @param address адрес
+     */
     public Venue(Long id, String name, int capacity,Address address){
         this.id=id;
         this.name=name;

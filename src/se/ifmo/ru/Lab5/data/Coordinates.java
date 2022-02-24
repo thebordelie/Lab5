@@ -10,6 +10,11 @@ public class Coordinates {
     /** Свойство - координата y*/
     private long y; //Значение поля должно быть больше -132
 
+    /**
+     * Конструктор задаёт координаты
+     * @param x Координата по x
+     * @param y Координата по y
+     */
     public Coordinates(float x, long y) {
         this.x = x;
         this.y = y;
@@ -17,16 +22,16 @@ public class Coordinates {
     public Coordinates(){}
 
     /**
-     * метод getX
-     * @return возвращает координату x
+     * Возвращает координату x
+     * @return int x
      */
     @XmlElement(name="x")
     public float getX() {
         return x;
     }
     /**
-     * метод getY
-     * @return возвращает координату y
+     * Возвращает координату y
+     * @return int y
      */
     @XmlElement(name="y")
     public long getY() {

@@ -363,6 +363,11 @@ public class CollectionManager {
             System.out.println("Сортировка невозможна, коллекция пуста");
         }
     }
+
+    /**
+     * Считает количество refundable
+     * @param refundabl значение
+     */
     protected void count_less_than_refundable (String refundabl){
         try {
             int refundable=Integer.parseInt(refundabl);

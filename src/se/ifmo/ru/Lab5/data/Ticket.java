@@ -21,6 +21,18 @@ public class Ticket {
     private TicketType type; //Поле не может быть null
     /** Свойство - место отправления*/
     private Venue venue; //Поле может быть null
+
+    /**
+     * Конструктор задаёт основные параметры билета
+     * @param id id билета
+     * @param name название билета
+     * @param coordinates координаты места прибытия
+     * @param creationDate дата создания
+     * @param price цена билета
+     * @param refundable возвратный ли билет
+     * @param type тип билета
+     * @param venue место отправления
+     */
     public Ticket(long id, String name, Coordinates coordinates, LocalDate creationDate, float price, boolean refundable, TicketType type, Venue venue) {
         this.id = id;
         this.name = name;
@@ -34,8 +46,8 @@ public class Ticket {
     public Ticket(){}
 
     /**
-     * Метод id
-     * @return Возвращает id билета
+     * Возвращает id билета
+     * @return long id
      */
     @XmlElement(name="id")
     public long getId() {
@@ -43,8 +55,8 @@ public class Ticket {
     }
 
     /**
-     * Метод name
-     * @return возвращает название билета
+     * возвращает название билета
+     * @return String name
      */
     @XmlElement(name="name")
     public String getName() {
@@ -52,8 +64,8 @@ public class Ticket {
     }
 
     /**
-     * Метод getCoordinates
-     * @return возвращает координаты место прибытия
+     * возвращает координаты место прибытия
+     * @return Coordinates coordinates
      */
     @XmlElement
     public Coordinates getCoordinates() {
@@ -61,8 +73,8 @@ public class Ticket {
     }
 
     /**
-     * Метод getCreationDate
-     * @return Возвращает дату создания билета
+     * Возвращает дату создания билета
+     * @return String creationDate
      */
     @XmlElement
     public String getCreationDate() {
@@ -70,8 +82,8 @@ public class Ticket {
     }
 
     /**
-     * Метод getPrice
-     * @return возвращает цену билета
+     * возвращает цену билета
+     * @return float price
      */
     @XmlElement(name="price")
     public float getPrice() {
@@ -79,8 +91,8 @@ public class Ticket {
     }
 
     /**
-     * Метод isRefundable
-     * @return возвращает возвращаемость билета
+     * возвращает возможность вернуть билет
+     * @return  boolean refundable
      */
     @XmlElement(name="refundable")
     public boolean isRefundable() {
@@ -88,8 +100,8 @@ public class Ticket {
     }
 
     /**
-     * Метод getType
-     * @return возвращает тип билета
+     * возвращает тип билета
+     * @return TicketType type
      */
     @XmlElement(name="type")
     public TicketType getType() {
@@ -97,8 +109,8 @@ public class Ticket {
     }
 
     /**
-     * Метод getVenue
-     * @return возвращает место отправления
+     * возвращает место отправления
+     * @return Venue venue
      */
     @XmlElement(name="venue")
     public Venue getVenue() {

@@ -248,13 +248,13 @@ public class TicketAsker {
     }
 
     /**
-     * Метод - спрашивает у пользователя Индекс
+     * Метод - спрашивает у пользователя ZipCode
      * @return возвращает индекс
      */
     public String askZipCode(){
         String strZipCode;
         try {
-            System.out.print("Индекс:");
+            System.out.print("Zipcode:");
             strZipCode=scanner.nextLine().trim();
             if (strZipCode.equals("")) throw new ElementMustNotBeEmptyException();
         }

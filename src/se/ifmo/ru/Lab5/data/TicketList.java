@@ -5,8 +5,15 @@ import java.util.LinkedList;
 @XmlRootElement(name = "root")
 @XmlType(propOrder = "tickets")
 public class TicketList {
+    /**
+     * Список билетов
+     */
     LinkedList<Ticket> tickets;
 
+    /**
+     * Конструктор задает список билетов
+     * @param tickets список билетов
+     */
     public TicketList(LinkedList<Ticket> tickets){
         this.tickets=tickets;
     }
