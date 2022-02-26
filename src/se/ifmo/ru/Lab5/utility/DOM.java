@@ -10,11 +10,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.InvalidPropertiesFormatException;
 import java.util.LinkedList;
 
 
 import org.w3c.dom.NodeList;
 import se.ifmo.ru.Lab5.exception.ElementMustNotBeEmptyException;
+import se.ifmo.ru.Lab5.exception.InvalidElementValueException;
 import sun.util.resources.LocaleData;
 
 
@@ -55,6 +57,9 @@ public class DOM {
                         throw new ElementMustNotBeEmptyException();
                     }
                 }
+                if(Long.parseLong(valueOfTicket.get(0))<=0||Float.parseFloat(valueOfTicket.get(5))<=0||Long.parseLong(valueOfTicket.get(3))<=-132||valueOfTicket.get(16).length()>=272||Integer.parseInt(valueOfTicket.get(10))<=0) {
+                    throw new InvalidElementValueException();
+                }
                 tickets.add(new Ticket(Long.parseLong(valueOfTicket.get(0)),valueOfTicket.get(1),
                         new Coordinates(Float.parseFloat(valueOfTicket.get(2)),Long.parseLong(valueOfTicket.get(3))),
                         localDate,Float.parseFloat(valueOfTicket.get(5)),Boolean.parseBoolean(valueOfTicket.get(6)),
@@ -73,6 +78,9 @@ public class DOM {
             }
             catch (IndexOutOfBoundsException ex){
                 System.out.println("Недостаточно данных, данные будут искажены");
+            }
+            catch (InvalidElementValueException ex){
+                System.out.println("Часть данных не соответствует условиям, данные будут искажены ");
             }
 
             valueOfTicket.clear();

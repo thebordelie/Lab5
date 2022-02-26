@@ -4,6 +4,7 @@ import se.ifmo.ru.Lab5.data.Coordinates;
 import se.ifmo.ru.Lab5.data.Location;
 import se.ifmo.ru.Lab5.data.TicketType;
 import se.ifmo.ru.Lab5.exception.ElementMustNotBeEmptyException;
+import se.ifmo.ru.Lab5.exception.InvalidElementValueException;
 
 import java.util.Scanner;
 public class TicketAsker {
@@ -115,7 +116,9 @@ public class TicketAsker {
             System.out.print("Цена=");
             strPrice=scanner.nextLine().trim();
             if (strPrice.equals("")) throw new ElementMustNotBeEmptyException();
+
             price=Float.parseFloat(strPrice);
+            if(price<=0) throw new InvalidElementValueException();
 
         }
         catch (NumberFormatException ex){
@@ -125,6 +128,9 @@ public class TicketAsker {
         }
         catch (ElementMustNotBeEmptyException ex){
             System.out.println(ex.getMessage());
+            return askPrice();
+        } catch (InvalidElementValueException e) {
+            System.out.println("Цена не может быть не положительной");
             return askPrice();
         }
         return price;
@@ -296,6 +302,7 @@ public class TicketAsker {
             strCapacity=scanner.nextLine().trim();
             if (strCapacity.equals("")) throw new ElementMustNotBeEmptyException();
             price=Integer.parseInt(strCapacity);
+            if(price<=0) throw new InvalidElementValueException();
         }
         catch (NumberFormatException ex){
             System.out.println("Неверный формат данных");
@@ -304,6 +311,10 @@ public class TicketAsker {
         }
         catch (ElementMustNotBeEmptyException ex){
             System.out.println(ex.getMessage());
+            return askCapacity();
+        }
+        catch (InvalidElementValueException ex){
+            System.out.println("Вместимость не может быть не положительной");
             return askCapacity();
         }
 
