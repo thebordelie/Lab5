@@ -20,7 +20,7 @@ public class Run {
                 System.out.println("Извините, мы не продаём бомбастер лицам старше 12 лет, это закон");
             }
             else{
-                System.out.println("Добро пожаловать в мир прекрасных грёз без линукса, питона и доллара по 80");
+                System.out.println("Добро пожаловать в мир прекрасных грёз без линукса, питона и доллара по 100");
                 CommandManager commandManager= new CommandManager(new CollectionManager(env));
                 commandManager.interactiveMod();
             }

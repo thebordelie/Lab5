@@ -5,6 +5,7 @@ import se.ifmo.ru.Lab5.data.Ticket;
 import se.ifmo.ru.Lab5.data.TicketList;
 import se.ifmo.ru.Lab5.data.TicketType;
 import se.ifmo.ru.Lab5.data.Venue;
+import se.ifmo.ru.Lab5.exception.RecursiveCommandException;
 import sun.util.resources.LocaleData;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -177,7 +178,7 @@ public class CollectionManager {
      * Метод - сохраняет коллекцию в файл
      */
     protected void save(){
-        String file_name="in.xml";
+        String file_name="input.xml";
         jaxbWorker.convertObjectToXml(ticketList,file_name);
         System.out.println("Файл успешно сохранён");
     }
@@ -225,6 +226,7 @@ public class CollectionManager {
                         save();
                         break;
                     case "execute_script":
+                        if (finalCommad[1].equals(file_name)) throw new RecursiveCommandException();
                         execute_script(finalCommad[1]);
                         break;
                     case "head":
@@ -258,6 +260,9 @@ public class CollectionManager {
         catch(IOException ex){
                 System.out.println("Считывание невозможно");
             }
+        catch (RecursiveCommandException ex){
+            System.out.println("Команда вызывает исполняемый скрипт - выполнение скрипта будет бесконечным ");
+        }
 
 
 

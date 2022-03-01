@@ -1,2 +1,2 @@
 show
-
+execute_script input.txt
